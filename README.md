@@ -1,7 +1,7 @@
 # Cordova Media Plugin Duration Demo
 Ionic app demonstrating the use of the new duration update callback for cordova-plugin-media
 
-This demo is built with the Ionic framework. If prompted, do not accept the beta for version 4 of Ionic. Please use version 3.
+This demo is built with the Ionic framework.
 
 ## Testing on iOS
 
