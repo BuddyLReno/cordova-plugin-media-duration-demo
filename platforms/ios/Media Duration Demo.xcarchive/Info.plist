@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ApplicationProperties</key>
+	<dict>
+		<key>ApplicationPath</key>
+		<string>Applications/Media Duration Demo.app</string>
+		<key>CFBundleIdentifier</key>
+		<string>me.buddylreno.media-plugin-demo</string>
+		<key>CFBundleShortVersionString</key>
+		<string>0.0.1</string>
+		<key>CFBundleVersion</key>
+		<string>0.0.1</string>
+		<key>SigningIdentity</key>
+		<string>iPhone Developer: buddy.reno@daveramsey.com (597RWZUVPJ)</string>
+		<key>Team</key>
+		<string>25D454MM3P</string>
+	</dict>
+	<key>ArchiveVersion</key>
+	<integer>2</integer>
+	<key>CreationDate</key>
+	<date>2018-11-20T14:39:04Z</date>
+	<key>Name</key>
+	<string>Media Duration Demo</string>
+	<key>SchemeName</key>
+	<string>Media Duration Demo</string>
+</dict>
+</plist>

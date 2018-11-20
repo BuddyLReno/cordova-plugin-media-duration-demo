@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Cordova media duration demo.</h1>
+  <p>The html below will update when the duration is available after pressing play. Cordova fires a callback with the
+    duration value which you can then store or do what you need with.</p>
+
+  <p>
+    <button ion-button (tap)="handlePlayPause()">{{ playPauseText }}</button>
+    <button ion-button (tap)="reload()">Reload</button>
+  </p>
+
+  <h2>Media Duration</h2>
+  <ul class="mediaDuration">
+    <li>Seconds: <span [innerHTML]="duration.seconds"></span></li>
+    <li>Minutes: <span [innerHTML]="duration.minutes"></span></li>
+  </ul>
+</ion-content>
