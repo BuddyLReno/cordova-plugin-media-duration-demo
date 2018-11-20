@@ -8,31 +8,31 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
     },
     "cordova-plugin-media": {
       "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "me.buddylreno.media-plugin-demo"
+      "PACKAGE_NAME": "me.buddylreno.mediaPluginDemo"
     }
   }
 }
