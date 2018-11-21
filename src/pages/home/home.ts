@@ -10,10 +10,10 @@ import { Platform } from 'ionic-angular';
 })
 export class HomePage {
 
-  public duration: { seconds: number, minutes: number } = {
-    seconds: 0,
-    minutes: 0
-  };
+  public durationViaUpdate: string[] = [];
+  public durationViaTimer: string[] = [];
+  private durationLoopCounter: number = 0;
+  private timerInterval: number = null;
   public playPauseText: string = "Play";
   private isPlaying: boolean = false;
   private audioStream: MediaObject = null;
@@ -39,8 +39,7 @@ export class HomePage {
   }
 
   private onDurationUpdate(duration: number): void {
-    this.duration.seconds = duration;
-    this.duration.minutes = duration / 60;
+    this.durationViaUpdate.push(duration.toString());
     this.changeDetectorRef.detectChanges();
   }
 
@@ -53,11 +52,28 @@ export class HomePage {
       this.isPlaying = true;
       this.playPauseText = "Pause";
       this.audioStream.play();
+      this.getDuration();
     }
   }
 
   public reload(): void {
     window.location.reload();
+  }
+
+  private getDuration(): void {
+    this.durationLoopCounter = 0;
+    this.timerInterval = setInterval(() => {
+      this.durationLoopCounter = this.durationLoopCounter + 100;
+      if (this.durationLoopCounter > 2000) {
+        clearInterval(this.timerInterval);
+      }
+      let dur = this.audioStream.getDuration();
+      this.durationViaTimer.push(dur.toString());
+      if (dur > 0) {
+        clearInterval(this.timerInterval);
+      }
+      this.changeDetectorRef.detectChanges();
+    }, 100);
   }
 
 }

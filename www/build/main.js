@@ -62,10 +62,10 @@ var HomePage = /** @class */ (function () {
         this.media = media;
         this.platform = platform;
         this.changeDetectorRef = changeDetectorRef;
-        this.duration = {
-            seconds: 0,
-            minutes: 0
-        };
+        this.durationViaUpdate = [];
+        this.durationViaTimer = [];
+        this.durationLoopCounter = 0;
+        this.timerInterval = null;
         this.playPauseText = "Play";
         this.isPlaying = false;
         this.audioStream = null;
@@ -87,8 +87,7 @@ var HomePage = /** @class */ (function () {
         });
     };
     HomePage.prototype.onDurationUpdate = function (duration) {
-        this.duration.seconds = duration;
-        this.duration.minutes = duration / 60;
+        this.durationViaUpdate.push(duration.toString());
         this.changeDetectorRef.detectChanges();
     };
     HomePage.prototype.handlePlayPause = function () {
@@ -101,18 +100,36 @@ var HomePage = /** @class */ (function () {
             this.isPlaying = true;
             this.playPauseText = "Pause";
             this.audioStream.play();
+            this.getDuration();
         }
     };
     HomePage.prototype.reload = function () {
         window.location.reload();
     };
+    HomePage.prototype.getDuration = function () {
+        var _this = this;
+        this.durationLoopCounter = 0;
+        this.timerInterval = setInterval(function () {
+            _this.durationLoopCounter = _this.durationLoopCounter + 100;
+            if (_this.durationLoopCounter > 2000) {
+                clearInterval(_this.timerInterval);
+            }
+            var dur = _this.audioStream.getDuration();
+            _this.durationViaTimer.push(dur.toString());
+            if (dur > 0) {
+                clearInterval(_this.timerInterval);
+            }
+            _this.changeDetectorRef.detectChanges();
+        }, 100);
+    };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/buddy.reno/webapps/cordova-plugin-media-duration-demo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h1>Cordova media duration demo.</h1>\n  <p>The html below will update when the duration is available after pressing play. Cordova fires a callback with the\n    duration value which you can then store or do what you need with.</p>\n\n  <p>\n    <button ion-button (tap)="handlePlayPause()">{{ playPauseText }}</button>\n    <button ion-button (tap)="reload()">Reload</button>\n  </p>\n\n  <h2>Media Duration</h2>\n  <ul class="mediaDuration">\n    <li>Seconds: <span [innerHTML]="duration.seconds"></span></li>\n    <li>Minutes: <span [innerHTML]="duration.minutes"></span></li>\n  </ul>\n</ion-content>'/*ion-inline-end:"/Users/buddy.reno/webapps/cordova-plugin-media-duration-demo/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/buddy.reno/webapps/cordova-plugin-media-duration-demo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Ionic Blank\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h1>Cordova media duration demo.</h1>\n  <p>The html below will update when the duration is available after pressing play. Cordova fires a callback with the\n    duration value which you can then store or do what you need with.</p>\n\n  <p>\n    <button ion-button (tap)="handlePlayPause()">{{ playPauseText }}</button>\n    <button ion-button (tap)="reload()">Reload</button>\n  </p>\n\n  <div class="GridContainer">\n    <div class="GridContainer-item">\n      <h2>Using update callback.</h2>\n      <ul class="mediaDuration" *ngFor="let duration of durationViaUpdate">\n        <li>Seconds: <span [innerHTML]="duration"></span></li>\n      </ul>\n    </div>\n    <div class="GridContainer-item">\n      <h2>Using timer method</h2>\n      <ul class="mediaDuration" *ngFor="let duration of durationViaTimer">\n        <li>Seconds: <span [innerHTML]="duration"></span></li>\n      </ul>\n    </div>\n  </div>\n</ion-content>'/*ion-inline-end:"/Users/buddy.reno/webapps/cordova-plugin-media-duration-demo/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__app_typings_media__["a" /* Media */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__app_typings_media__["a" /* Media */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__app_typings_media__["a" /* Media */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Platform */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map

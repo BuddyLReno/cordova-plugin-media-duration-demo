@@ -16,9 +16,18 @@
     <button ion-button (tap)="reload()">Reload</button>
   </p>
 
-  <h2>Media Duration</h2>
-  <ul class="mediaDuration">
-    <li>Seconds: <span [innerHTML]="duration.seconds"></span></li>
-    <li>Minutes: <span [innerHTML]="duration.minutes"></span></li>
-  </ul>
+  <div class="GridContainer">
+    <div class="GridContainer-item">
+      <h2>Using update callback.</h2>
+      <ul class="mediaDuration" *ngFor="let duration of durationViaUpdate">
+        <li>Seconds: <span [innerHTML]="duration"></span></li>
+      </ul>
+    </div>
+    <div class="GridContainer-item">
+      <h2>Using timer method</h2>
+      <ul class="mediaDuration" *ngFor="let duration of durationViaTimer">
+        <li>Seconds: <span [innerHTML]="duration"></span></li>
+      </ul>
+    </div>
+  </div>
 </ion-content>

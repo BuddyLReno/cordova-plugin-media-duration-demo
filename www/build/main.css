@@ -25673,3 +25673,13 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+page-home .GridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+page-home .GridContainer .mediaDuration {
+  font-size: 12px;
+}
